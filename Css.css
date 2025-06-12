@@ -1,0 +1,85 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding:10;
+    color:black;
+}
+.side{
+    display:flex;
+    min-height: 100vh;
+
+}
+.sidebar{
+    background-color:aliceblue;
+    padding: 20px;
+    width: 250px;
+}
+.sidebar h3{
+    margin-top: 10px;
+}
+
+.sidebar ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar ul li{
+    list-style-type: none;
+    margin: 5px;
+}
+.Mbr{
+    background-color: blue;
+    margin-top: 20px;
+    color: beige;
+    padding: 10px;
+    border: none;
+    width:100%;
+    font-weight: bold;
+}
+
+.Figma{
+    padding: 20px;
+    background-color: white;
+}
+.Figma h1{
+    font-size: 24px;
+    margin bottom:10px;
+}
+.int{
+    color: black;
+    font-style:italic;
+}
+.banner{
+    width:60%;
+    margin: 20px;
+    max-width: 600px;
+    margin: left 30px;
+
+}
+.top{
+    list-style-type: none;
+    color: black;
+    margin-top: 10px;
+    margin-left:-30px;
+}
+.buttons{
+    margin: top 10px;
+}
+.Subs{
+   background-color:aqua;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin-left: 500px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.Fol{background-color:aqua;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+
+}

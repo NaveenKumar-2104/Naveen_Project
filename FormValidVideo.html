@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JS FORM VALIDATION</title>
+    <style>
+        span{
+            color: red;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+    <form id="userForm">
+        First Name: <input type="text" id="fname"><br><br>
+        Last Name: <input type="text" id="lname"><br><br>
+        Email: <input type="email" id="email"><br><br>
+        Interests:<input type="checkbox" value="Coding">CODING
+                  <input type ="checkbox" value="Music">MUSIC<br><br>
+        Gender:
+        <input type="radio" name="gender" value="Male">MALE
+        <input type="radio" name="gender" value="Female">FEMALE<br><br>        
+        Comments:<textarea id="comment"></textarea><br><br>
+        Country:
+        <select id="country">
+            <option value="">Select</option>
+            <option value="India">INDIA</option>
+            <option value="USA">USA</option>
+
+        </select><br><br>
+        <button type="button" onclick="submitForm()">SUBMIT</button>
+        <button type="button" onclick="clearForm()" >Cancel</button>          
+    </form>
+    <br>
+    <table id="dataTable">
+        <thead>
+            <tr>
+            <th>FIRSTNAME</th><th>LASTNAME</th><th>E-MAIL</th><th>INTERESTS</th><th>GENDER</th><th>COMMENTS</th><th>COUNTRY</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function createSpan(id,msg){
+            let existing = document.getElementById(id + "-error");
+            if(!existing){
+                let span = document.createElement("span");
+                span.id = id + "-error";
+                span.textContent = msg;
+                document.getElementById(id).after(span);
+            }
+        }
+        function removeSpan(id){
+            let span = document.getElementById(id + "-error");
+            if (span) span.remove();
+        }
+        function submitForm(){
+            const fname = document.getElementById("fname");
+            const lname = document.getElementById("lname");
+            const email = document.getElementById("email");
+            const comment = document.getElementById("comment");
+            const country = document.getElementById("country");
+            const gender = document.querySelector('input[name="gender"]:checked');
+            const interests =Array.from( document.querySelectorAll('input[type="checkbox"]:checked')).map(el=>el.value).join(",");
+              
+            let isValid = true;
+
+            if(!fname.value){
+                createSpan("fname","First name required");
+                isValid =false;
+            } else removeSpan("fname");
+            if(!lname.value){
+                createSpan("lname","Last name required");
+                isValid =false;
+            } else removeSpan("lname");
+            if(!email.value){
+                createSpan("email","Email required");
+                isValid =false;
+            } else removeSpan("email");
+
+            if(!isValid) return;
+
+            const row = document.createElement("tr");
+                row.innerHTML= `
+                <td>${fname.value}</td>
+                <td>${lname.value}</td>
+                <td>${email.value}</td>
+                <td>${interests}</td>
+                <td>${gender ? gender.value: ""}</td>
+                <td>${comment.value}</td>
+                <td>${country.value}</td>
+                `;
+                document.querySelector("#dataTable tbody").appendChild(row);
+
+                clearForm();
+            
+        }
+        function clearForm(){
+            document.getElementById("userForm").reset();
+            document.querySelectorAll("span").forEach(span=>span.remove());
+        }
+    
+    </script>
+    
+</body>
+</html>
